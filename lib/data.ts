@@ -141,12 +141,8 @@ export const PLACES: Place[] = [
       { name: "Warung Ume Anyar", price: "$", kitchen: "Балийская, семейный warung", desc: "Аутентичный семейный варунг. Наси кампур, свежие соки. Блюдо 25–50k, честные цены.", mapQuery: "Warung Ume Anyar Sidemen", rating: 4.6, reviews: 430 },
       { name: "The Sidemen Restaurant", price: "$$$", kitchen: "Ресторан, fine dining", desc: "Особый ужин. Рисовые террасы и лес вокруг. Высокий рейтинг, но отзывов мало (39).", mapQuery: "The Sidemen Restaurant", rating: 4.9, reviews: 39 },
     ],
-    workspaces: [
-      { name: "09.00am coffee and eatery", type: "Кафе с wifi", equipment: "Wifi, кофе, бюджет, до 22:00", desc: "Кофейня-eatery на Jl. Raya Tebola. Работает до 22:00 — единственный поздний вариант. Чек 25–50k, быстро и уютно.", mapQuery: "09.00am coffee and eatery Sidemen", rating: 4.8, reviews: 257, price: "25–50k" },
-      { name: "Blue Paradise Coffee Bakery", type: "Кафе с wifi", equipment: "Wifi, пекарня, кофе, до 22:00", desc: "Кофейня + пекарня + ресторан вок в одном. Работает до 22:00. Чек 50–75k, много еды на любой вкус.", mapQuery: "Blue Paradise Coffee Bakery Sidemen", rating: 4.8, reviews: 225, price: "50–75k" },
-      { name: "Citrus & Vine", type: "Кафе-коворкинг", equipment: "Wifi для гостей Samanvaya, кофе", desc: "Кофейня при resort Samanvaya Bali, ★5.0 / 1061 отзыв — топ Сидемена. Работает с 07:00, wifi есть для гостей.", mapQuery: "Citrus Vine Sidemen", rating: 5.0, reviews: 1061, price: "средний чек 80–150k" },
-    ],
-    workNote: "В Сидемене нет полноценных коворкингов. Лучшие дневные варианты — 09.00am и Blue Paradise (оба до 22:00). Вечером после 22:00 — из виллы с надёжным wifi.",
+    workspaces: [],
+    workNote: "В Сидемене 0 мест для работы — все кафе open-air (жарко, москиты). Работа только из виллы с AC и надёжным wifi. Либо ехать в Клунгкунг (30 мин) в закрытую кофейню с кондиционером.",
     days: [
       { date: "14 июня", weekday: "вс", title: "Переезд и отдых", isWeekend: true, items: [
         { time: "11:00", text: "Выезд Убуд → Сидемен (1:30)", emoji: "🛵" },
