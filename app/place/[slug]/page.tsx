@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getPlace, PLACES } from "@/lib/data";
 import SpotCard from "@/components/SpotCard";
 import CafeCard from "@/components/CafeCard";
+import WorkspaceCard from "@/components/WorkspaceCard";
 import DayItemRow from "@/components/DayItemRow";
 import { mapsSearchUrl } from "@/lib/maps";
 
@@ -16,7 +17,7 @@ const gradMap: Record<string, string> = {
   sunset: "from-sunset to-[#F0955F]",
 };
 
-type Tab = "plan" | "spots" | "cafes";
+type Tab = "plan" | "spots" | "cafes" | "work";
 
 export default async function PlacePage({
   params,
@@ -63,10 +64,11 @@ export default async function PlacePage({
 
       {/* Вкладки */}
       <div className="sticky top-0 z-10 bg-bg/95 backdrop-blur border-b border-line">
-        <div className="flex px-4">
+        <div className="flex px-2 noscrollbar overflow-x-auto">
           <TabLink slug={slug} tab="plan" current={currentTab} label="План" count={place.days.length} />
           <TabLink slug={slug} tab="spots" current={currentTab} label="Места" count={place.spots.length} />
           <TabLink slug={slug} tab="cafes" current={currentTab} label="Кафе" count={place.cafes.length} />
+          <TabLink slug={slug} tab="work" current={currentTab} label="💻 Работа" count={place.workspaces.length} />
         </div>
       </div>
 
@@ -116,6 +118,24 @@ export default async function PlacePage({
           <div className="space-y-2.5">
             {place.cafes.map((c) => (
               <CafeCard key={c.name} cafe={c} />
+            ))}
+          </div>
+        )}
+
+        {currentTab === "work" && (
+          <div className="space-y-2.5">
+            {place.workNote && (
+              <div className="bg-gold/10 border border-gold/30 rounded-xl p-3 text-sm text-[#6e5410] leading-snug">
+                ℹ️ {place.workNote}
+              </div>
+            )}
+            {place.workspaces.length === 0 && !place.workNote && (
+              <div className="bg-white rounded-xl p-4 text-sm text-ink2 text-center">
+                В этой локации нет специальных мест для работы. Работай из отеля.
+              </div>
+            )}
+            {place.workspaces.map((w) => (
+              <WorkspaceCard key={w.name} workspace={w} />
             ))}
           </div>
         )}

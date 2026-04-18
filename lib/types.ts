@@ -36,6 +36,19 @@ export interface Day {
   isWeekend?: boolean;
 }
 
+export type WorkspaceType = "Коворкинг" | "Кафе-коворкинг" | "Кафе с wifi";
+
+export interface Workspace {
+  name: string;
+  type: WorkspaceType;
+  equipment: string;  // "Быстрый wifi, розетки, AC" — короткое описание условий
+  desc: string;       // что внутри, часы работы, цена
+  mapQuery: string;
+  rating?: number;
+  reviews?: number;
+  price?: string;     // "150k IDR/день" или "бесплатно" или средний чек
+}
+
 export interface Place {
   slug: string;
   name: string;
@@ -46,5 +59,7 @@ export interface Place {
   color: string;         // tailwind class hint
   spots: Spot[];
   cafes: Cafe[];
+  workspaces: Workspace[];  // места для работы (коворкинги, laptop-friendly кафе)
+  workNote?: string;        // заметка если в локации нет нормальных мест ("работать из отеля")
   days: Day[];
 }
