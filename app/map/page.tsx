@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PLACES, ROUTE_POINTS } from "@/lib/data";
 import { mapsDirectionsUrl, mapsSearchUrl } from "@/lib/maps";
 import RouteMap from "@/components/RouteMap";
+import routeGeometry from "@/lib/route-geometry.json";
 
 export default function MapPage() {
   const dirUrl = mapsDirectionsUrl(ROUTE_POINTS);
@@ -15,6 +16,17 @@ export default function MapPage() {
         <h1 className="text-3xl font-bold mt-2">🗺 Карта маршрута</h1>
         <div className="text-sm text-ink2 mt-1">
           9 точек по острову, против часовой стрелки
+        </div>
+        <div className="flex gap-2 mt-3 text-xs">
+          <span className="bg-jungle/10 text-jungle font-semibold px-2 py-1 rounded">
+            🛵 {routeGeometry.distanceKm} км
+          </span>
+          <span className="bg-ocean/10 text-ocean font-semibold px-2 py-1 rounded">
+            ⏱ {routeGeometry.durationHours} ч в пути
+          </span>
+          <span className="bg-sunset/10 text-sunset font-semibold px-2 py-1 rounded">
+            📍 {PLACES.length} точек
+          </span>
         </div>
       </header>
 

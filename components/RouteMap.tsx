@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { PLACES, PLACE_COORDS } from "@/lib/data";
+import routeGeometry from "@/lib/route-geometry.json";
 
 // Leaflet через CDN — не тянем в бандл лишний пакет
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
@@ -64,12 +65,12 @@ export default function RouteMap() {
           return [c.lat, c.lon] as [number, number];
         });
 
-        // Линия маршрута
-        L.polyline(latlngs, {
+        // Реальный маршрут по дорогам (OSRM geometry, preсчитан при сборке)
+        const routePts = routeGeometry.points as [number, number][];
+        L.polyline(routePts, {
           color: "#E0653A",
           weight: 4,
           opacity: 0.9,
-          dashArray: "8,6",
         }).addTo(map);
 
         // Пины с номерами
