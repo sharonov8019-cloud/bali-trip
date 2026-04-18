@@ -12,9 +12,11 @@ export interface Spot {
 export interface Cafe {
   name: string;
   price: Price;
-  kitchen: string; // кухня / стиль
-  desc: string;    // короткое описание + ключевые блюда/цены
+  kitchen: string;    // кухня / стиль
+  desc: string;       // короткое описание + ключевые блюда/цены
   mapQuery: string;
+  rating?: number;    // Google Maps rating (например 4.6)
+  reviews?: number;   // количество отзывов (например 2800)
   instagram?: string;
   menuUrl?: string;
 }

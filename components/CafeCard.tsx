@@ -7,6 +7,11 @@ const priceColor: Record<string, string> = {
   "$$$": "bg-sunset/10 text-sunset",
 };
 
+function formatReviews(n: number): string {
+  if (n >= 1000) return `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k`;
+  return `${n}`;
+}
+
 export default function CafeCard({ cafe }: { cafe: Cafe }) {
   const mapUrl = mapsSearchUrl(cafe.mapQuery);
   // "Меню" — открываем Google Maps place, где видны фото блюд и цены/отзывы
@@ -20,6 +25,14 @@ export default function CafeCard({ cafe }: { cafe: Cafe }) {
             <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${priceColor[cafe.price]}`}>
               {cafe.price}
             </span>
+            {cafe.rating !== undefined && (
+              <span className="text-xs font-semibold text-[#8a6a1e] bg-gold/15 px-1.5 py-0.5 rounded">
+                ★ {cafe.rating}
+                {cafe.reviews !== undefined && (
+                  <span className="text-ink2 font-normal ml-1">({formatReviews(cafe.reviews)})</span>
+                )}
+              </span>
+            )}
           </div>
           <div className="text-xs text-ink2 mt-0.5">{cafe.kitchen}</div>
           <div className="text-sm text-ink mt-1 leading-snug">{cafe.desc}</div>
