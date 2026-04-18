@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { background: #FAF6EE; color: #1F2A2E; }
+
+.safe-top { padding-top: env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Чтобы iframe Google Maps подстраивался */
+.map-frame { aspect-ratio: 4 / 3; width: 100%; border: 0; border-radius: 12px; }
+
+/* Скрытие скролла для горизонтальных списков */
+.noscrollbar::-webkit-scrollbar { display: none; }
+.noscrollbar { -ms-overflow-style: none; scrollbar-width: none; }
