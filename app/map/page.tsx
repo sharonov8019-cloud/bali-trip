@@ -15,7 +15,7 @@ export default function MapPage() {
         </Link>
         <h1 className="text-3xl font-bold mt-2">🗺 Карта маршрута</h1>
         <div className="text-sm text-ink2 mt-1">
-          9 точек по острову, против часовой стрелки
+          {PLACES.length} точек по острову + транзит Джатилувих
         </div>
         <div className="flex gap-2 mt-3 text-xs">
           <span className="bg-jungle/10 text-jungle font-semibold px-2 py-1 rounded">
@@ -43,7 +43,7 @@ export default function MapPage() {
           🧭 Построить маршрут в Google Maps
         </a>
         <div className="text-[11px] text-ink2 text-center mt-1.5 px-4">
-          Откроет приложение Google Maps с навигацией через все 9 точек
+          Откроет приложение Google Maps с навигацией через все точки
         </div>
       </div>
 

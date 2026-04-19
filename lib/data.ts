@@ -8,7 +8,8 @@ export const TRIP_META = {
   workingHours: "с 14:00 до ночи по будням",
 };
 
-// Главные точки маршрута (для карты) — Убуд → … → Букит (Улувату)
+// Главные точки маршрута (для карты) — Убуд → … → Букит (Улувату).
+// Джатилувих — транзит на пути Мундук → Букит (не самостоятельная локация, pin нет).
 export const ROUTE_POINTS = [
   "Ubud, Bali, Indonesia",
   "Sidemen, Karangasem, Bali, Indonesia",
@@ -30,7 +31,6 @@ export const PLACE_COORDS: Record<string, { lat: number; lon: number }> = {
   lovina: { lat: -8.1583, lon: 115.0283 },
   pemuteran: { lat: -8.1425, lon: 114.6517 },
   munduk: { lat: -8.2628, lon: 115.0681 },
-  jatiluwih: { lat: -8.3706, lon: 115.1367 },
   bukit: { lat: -8.8291, lon: 115.0849 },
 };
 
@@ -470,44 +470,10 @@ export const PLACES: Place[] = [
 
   // =========================================================
   {
-    slug: "jatiluwih",
-    name: "Джатилувих",
-    nights: 1,
-    dates: "4–5 июля",
-    summary: "UNESCO террасы, храм Батукару, тишина",
-    emoji: "🌾",
-    color: "jungle",
-    spots: [
-      { name: "Jatiluwih Rice Terraces", desc: "UNESCO. Трек-маршруты (красный/жёлтый/синий), 1–3 часа", mapQuery: "Jatiluwih Rice Terrace", tag: "природа", cost: "40k вход" },
-      { name: "Pura Luhur Batukaru", desc: "Второй по значимости храм после Besakih, среди джунглей", mapQuery: "Pura Luhur Batukaru", tag: "храм", cost: "бесплатно, донат" },
-      { name: "Leke Leke Waterfall", desc: "Спрятанный водопад в джунглях, 40 мин", mapQuery: "Leke Leke Waterfall", tag: "водопад", cost: "50k" },
-      { name: "Yeh Hoo Waterfall", desc: "Каскад, мало людей", mapQuery: "Yeh Hoo Waterfall", tag: "водопад" },
-      { name: "Gunung Batukaru trek", desc: "Восхождение 2276м, серьёзный трек (для энтузиастов)", mapQuery: "Mount Batukaru", tag: "трек" },
-      { name: "Pupuan Rice Terraces", desc: "Ещё одни террасы, менее известные", mapQuery: "Pupuan Rice Terrace", tag: "природа" },
-      { name: "Cycling по террасам", desc: "Велопрокат при Jatiluwih Visitor Center", mapQuery: "Jatiluwih Visitor Center", tag: "вело" },
-    ],
-    cafes: [],
-    workspaces: [],
-    workNote: "Джатилувих — заповедник рисовых террас. Работы и еды здесь минимум, большинство точек при входе в парк. Ешь и работай из отеля.",
-    days: [
-      { date: "4 июля", weekday: "сб", title: "🎯 Террасы + храм Батукару", isWeekend: true, items: [
-        { time: "8:30", text: "Завтрак" },
-        { time: "9:30", text: "Выезд Мундук → Джатилувих (1:30)", emoji: "🛵" },
-        { time: "11:00", text: "Заселение" },
-        { time: "11:30", text: "Jatiluwih Rice Terraces trekking", emoji: "🌾", highlight: true },
-        { time: "13:30", text: "Обед в Gong Jatiluwih с панорамой" },
-        { time: "15:00", text: "Pura Luhur Batukaru — храм в джунглях", emoji: "🏯", highlight: true },
-        { time: "19:00", text: "Ужин" },
-      ]},
-    ],
-  },
-
-  // =========================================================
-  {
     slug: "bukit",
     name: "Букит",
-    nights: 3,
-    dates: "5–8 июля",
+    nights: 4,
+    dates: "4–8 июля",
     summary: "Улувату, скалы, сёрф, закаты, Кечак-танец",
     emoji: "🌅",
     color: "sunset",
@@ -530,24 +496,32 @@ export const PLACES: Place[] = [
     workspaces: [],
     workNote: "Букит — финальные дни. Конкретные места не нужны, выбирай по настроению.",
     days: [
-      { date: "5 июля", weekday: "сб", title: "Заезд в Букит", items: [
-        { time: "10:00", text: "Выезд Джатилувих → Букит (2:30)", emoji: "🛵" },
-        { time: "13:00", text: "Заселение, пляж", emoji: "🏖" },
-        { time: "18:00", text: "Кечак-танец у Pura Uluwatu", emoji: "🏯", highlight: true },
+      { date: "4 июля", weekday: "пт", title: "Переезд Мундук → Букит через Джатилувих", items: [
+        { time: "9:00", text: "Выезд Мундук → Джатилувих (1:30)", emoji: "🛵" },
+        { time: "10:30", text: "Остановка в Джатилувих: UNESCO рисовые террасы, 1–2 часа", emoji: "🌾", highlight: true },
+        { time: "12:30", text: "Обед в Gong Jatiluwih с панорамой" },
+        { time: "14:00", text: "Выезд Джатилувих → Букит (2:30)", emoji: "🛵" },
+        { time: "17:00", text: "Заселение в Букит, пляж", emoji: "🏖" },
         { time: "20:00", text: "Ужин" },
       ]},
-      { date: "6 июля", weekday: "вс", items: [
-        { time: "9:30", text: "Завтрак, пляж (Padang Padang / Bingin)" },
+      { date: "5 июля", weekday: "сб", title: "День пляжей", isWeekend: true, items: [
+        { time: "9:30", text: "Завтрак" },
+        { time: "10:30", text: "Пляжи: Balangan / Dreamland / Melasti", emoji: "🏖" },
         { time: "13:00", text: "Обед у моря" },
+        { time: "18:00", text: "Закат в Single Fin Uluwatu (субб-вс мощно)", emoji: "🌅", highlight: true },
+      ]},
+      { date: "6 июля", weekday: "вс", items: [
+        { time: "9:30", text: "Завтрак, серф / пляж (Padang Padang / Bingin)" },
+        { time: "13:00", text: "Обед" },
         { time: "14:00", text: "Работа", emoji: "💻" },
-        { time: "18:00", text: "Закат в Single Fin Uluwatu", emoji: "🌅", highlight: true },
+        { time: "18:00", text: "Закат в Rock Bar Ayana / Savaya", emoji: "🌅" },
       ]},
       { date: "7 июля", weekday: "пн", title: "Последний день на Бали", items: [
         { time: "9:30", text: "Бассейн / пляж (Nyang Nyang / Green Bowl)" },
         { time: "13:00", text: "Обед" },
         { time: "14:00", text: "Работа (последний день)", emoji: "💻" },
-        { time: "18:00", text: "Прощальный закат — Rock Bar Ayana / Savaya", emoji: "🌅", highlight: true },
-        { time: "20:30", text: "Прощальный ужин на Букит" },
+        { time: "18:00", text: "Прощальный закат на Букит", emoji: "🌅", highlight: true },
+        { time: "20:30", text: "Прощальный ужин" },
       ]},
     ],
   },
