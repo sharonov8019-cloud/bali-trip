@@ -1,4 +1,4 @@
-const CACHE = "bali-v6";
+const CACHE = "bali-v7";
 const STATIC_ASSETS = ["/", "/map", "/today"];
 
 self.addEventListener("install", (event) => {
