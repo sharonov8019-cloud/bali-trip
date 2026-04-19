@@ -49,6 +49,14 @@ export interface Workspace {
   price?: string;     // "150k IDR/день" или "бесплатно" или средний чек
 }
 
+export interface Hotel {
+  name: string;            // "Ubud Jungle Stay - Mahari"
+  mapUrl: string;          // ссылка на Google Maps (короткая maps.app.goo.gl/...)
+  bookingUrl: string;      // ссылка на бронь (Booking / Airbnb)
+  bookingProvider: "Booking" | "Airbnb"; // для иконки/цвета кнопки
+  nights?: string;         // "ночи 1–2" если в локации несколько отелей
+}
+
 export interface Place {
   slug: string;
   name: string;
@@ -57,9 +65,11 @@ export interface Place {
   summary: string;
   emoji: string;
   color: string;         // tailwind class hint
+  hotels: Hotel[];       // забронированные отели в локации (может быть несколько)
+  arriveFrom?: string;   // slug предыдущей локации (для отображения "откуда приехали")
   spots: Spot[];
   cafes: Cafe[];
-  workspaces: Workspace[];  // места для работы (коворкинги, laptop-friendly кафе)
-  workNote?: string;        // заметка если в локации нет нормальных мест ("работать из отеля")
+  workspaces: Workspace[];
+  workNote?: string;
   days: Day[];
 }

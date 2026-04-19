@@ -22,16 +22,17 @@ export const ROUTE_POINTS = [
   "Uluwatu, Bali, Indonesia",
 ];
 
-// Координаты каждой локации (lat, lon) — для карты в app
+// Координаты каждой локации (lat, lon) — это координаты забронированного отеля.
+// Pin на карте и маршрут строятся между отелями.
 export const PLACE_COORDS: Record<string, { lat: number; lon: number }> = {
-  ubud: { lat: -8.5069, lon: 115.2625 },
-  sidemen: { lat: -8.4556, lon: 115.4492 },
-  kintamani: { lat: -8.2778, lon: 115.3525 },
-  amed: { lat: -8.3400, lon: 115.6864 },
-  lovina: { lat: -8.1583, lon: 115.0283 },
-  pemuteran: { lat: -8.1425, lon: 114.6517 },
-  munduk: { lat: -8.2628, lon: 115.0681 },
-  bukit: { lat: -8.8291, lon: 115.0849 },
+  ubud:      { lat: -8.5255244, lon: 115.2771499 },  // Ubud Jungle Stay - Mahari
+  sidemen:   { lat: -8.4649148, lon: 115.4326117 },  // Lumbung uma nadi villas
+  kintamani: { lat: -8.2417298, lon: 115.3849591 },  // KAMARU VILLA
+  amed:      { lat: -8.3360486, lon: 115.6478447 },  // Qchen Cuan Amed
+  lovina:    { lat: -8.1554967, lon: 115.034491  },  // Villa Jepun Lovina
+  pemuteran: { lat: -8.1437668, lon: 114.6532036 },  // Mango Tree Inn
+  munduk:    { lat: -8.2796735, lon: 115.0510606 },  // Clovehigh Cabin (первый отель)
+  bukit:     { lat: -8.8431071, lon: 115.1777908 },  // Manik Pandawa Villa
 };
 
 // Bounding box Бали (для OSM embed)
@@ -47,6 +48,9 @@ export const PLACES: Place[] = [
     summary: "Лес обезьян, рисовые террасы, Cretya, водопады, йога",
     emoji: "🌿",
     color: "jungle",
+    hotels: [
+      { name: "Ubud Jungle Stay — Mahari", mapUrl: "https://maps.app.goo.gl/aAAEkabXriKNZjnz6", bookingUrl: "https://secure.booking.com/confirmation.html?auth_key=zoPLov1KPV6GLvIS;aid=304142;lang=ru;source=mytrips#manage-booking-quick-action", bookingProvider: "Booking" },
+    ],
     spots: [
       { name: "Monkey Forest", desc: "Лес обезьян. Открытие 9:00, к 10 народ. Прячь очки и телефоны", mapQuery: "Sacred Monkey Forest Sanctuary Ubud", tag: "парк", time: "утро", cost: "80k IDR" },
       { name: "Tegalalang Rice Terraces", desc: "Классика рисовых террас. К 8:00 без толпы", mapQuery: "Tegalalang Rice Terrace", tag: "природа", time: "утро", cost: "25k IDR" },
@@ -127,6 +131,10 @@ export const PLACES: Place[] = [
     summary: "Рисовые террасы без туристов, виды на Агунг, детокс",
     emoji: "🌾",
     color: "jungle",
+    arriveFrom: "ubud",
+    hotels: [
+      { name: "Lumbung Uma Nadi Villas", mapUrl: "https://maps.app.goo.gl/gLnjUGkcC33wSiZ67", bookingUrl: "https://ru.airbnb.com/trips/v1/reservation-details/ro/RESERVATION2_CHECKIN/HMPRTA9EXQ", bookingProvider: "Airbnb" },
+    ],
     spots: [
       { name: "Sidemen Rice Terrace Walk", desc: "Прогулка по террасам, фермеры, коровы. Лучше утром", mapQuery: "Sidemen Rice Terrace Walk", tag: "природа", cost: "бесплатно" },
       { name: "Gembleng Waterfall", desc: "Каменные природные ванны-джакузи, 30 мин", mapQuery: "Gembleng Waterfall Sidemen", tag: "водопад", cost: "25k IDR" },
@@ -167,6 +175,10 @@ export const PLACES: Place[] = [
     summary: "🌋 Батур (сб), горячие источники, лава, клубника",
     emoji: "🌋",
     color: "ocean",
+    arriveFrom: "sidemen",
+    hotels: [
+      { name: "KAMARU VILLA", mapUrl: "https://maps.app.goo.gl/mXzLWMdVPHZAtgd97", bookingUrl: "https://secure.booking.com/confirmation.html?auth_key=e4uvrTegtRQvncbL;aid=304142;lang=ru;source=mytrips", bookingProvider: "Booking" },
+    ],
     spots: [
       { name: "Mount Batur Sunrise Trek", desc: "Восхождение в 03:00, рассвет 1717 м. С гидом обязательно", mapQuery: "Mount Batur Sunrise Trek", tag: "восхождение", cost: "400–500k IDR с гидом" },
       { name: "Toya Devasya Hot Springs", desc: "Лучшие горячие источники, 4 бассейна + озеро", mapQuery: "Toya Devasya Hot Spring", tag: "спа", cost: "~200k IDR весь день" },
@@ -242,6 +254,10 @@ export const PLACES: Place[] = [
     summary: "Дайвинг у корабля, массаж, йога, коворкинг, русская баня",
     emoji: "🌊",
     color: "ocean",
+    arriveFrom: "kintamani",
+    hotels: [
+      { name: "Qchen Cuan Amed", mapUrl: "https://maps.app.goo.gl/V6FP7tkW3HRt9msy6", bookingUrl: "https://secure.booking.com/confirmation.html?auth_key=51eXFByt6w9Vtgml;aid=304142;lang=ru;source=mytrips", bookingProvider: "Booking" },
+    ],
     spots: [
       { name: "USS Liberty Shipwreck (Tulamben)", desc: "Must-dive. 2 погружения, 15 мин от Амеда", mapQuery: "USAT Liberty Shipwreck Tulamben", tag: "дайв", time: "6:30 старт", cost: "1M IDR за 2 погружения" },
       { name: "Tirta Gangga Water Palace", desc: "Королевский водный дворец с бассейнами и каменными дорожками-ступеньками среди прудов с карпами. 20 мин от Амеда", mapQuery: "Tirta Gangga Water Palace", tag: "дворец", time: "8:00–10:00 до жары", cost: "50k IDR + 30k парковка" },
@@ -315,6 +331,10 @@ export const PLACES: Place[] = [
     summary: "Дельфины, Aling-Aling с прыжками, планктон ночью",
     emoji: "🐬",
     color: "ocean",
+    arriveFrom: "amed",
+    hotels: [
+      { name: "Villa Jepun Lovina", mapUrl: "https://maps.app.goo.gl/DSRQp9nMu8UJwSYy8", bookingUrl: "https://secure.booking.com/confirmation.html?auth_key=RvtbIuXp81TSYwhp;aid=304142;lang=ru;source=mytrips", bookingProvider: "Booking" },
+    ],
     spots: [
       { name: "Dolphin boat tour", desc: "04:30 подъём, лодка, дельфины. Заказать накануне", mapQuery: "Lovina Dolphin Tour", tag: "лодка", time: "05:00", cost: "200k/чел" },
       { name: "Aling-Aling Waterfall", desc: "Must. Прыжки 5/10/15 м, горки, дикий 35-м водопад. Гид обязателен", mapQuery: "Aling-Aling Waterfall", tag: "водопад", cost: "125k с гидом" },
@@ -377,6 +397,10 @@ export const PLACES: Place[] = [
     summary: "Menjangan Island snorkeling, Biorock, черепахи, тихо",
     emoji: "🐢",
     color: "ocean",
+    arriveFrom: "lovina",
+    hotels: [
+      { name: "Mango Tree Inn", mapUrl: "https://maps.app.goo.gl/XnJRmWwpp9P6vxib8", bookingUrl: "https://secure.booking.com/confirmation.html?auth_key=VVF23pGfuo9M2F6J;aid=304142;lang=ru;source=mytrips", bookingProvider: "Booking" },
+    ],
     spots: [
       { name: "Menjangan Island snorkel/dive", desc: "Must. Лучший риф Бали, West Bali National Park. Лодка 8:00, 2–3 часа", mapQuery: "Menjangan Island Bali", tag: "снорк/дайв", cost: "400–600k/чел" },
       { name: "Biorock Pemuteran", desc: "Искусственный коралловый риф у берега, снорк бесплатно", mapQuery: "Biorock Pemuteran Bay", tag: "снорк", cost: "бесплатно" },
@@ -429,6 +453,11 @@ export const PLACES: Place[] = [
     summary: "Водопады, озёра Буян/Тамблинган, храм Ulun Danu Beratan",
     emoji: "⛰",
     color: "jungle",
+    arriveFrom: "pemuteran",
+    hotels: [
+      { name: "Clovehigh Cabin and Homestay", mapUrl: "https://maps.app.goo.gl/iz1C6gd9Ghzefwcv8", bookingUrl: "https://secure.booking.com/confirmation.html?auth_key=3VCTMFQ1xC6fRBqn;aid=304142;lang=ru;source=mytrips", bookingProvider: "Booking", nights: "первые ночи" },
+      { name: "Munduk Farmhouse", mapUrl: "https://maps.app.goo.gl/coqjRWdqCKrqHgJX8", bookingUrl: "https://secure.booking.com/confirmation.html?auth_key=UJujyEW8WHETn3LI;aid=304142;lang=ru;source=mytrips", bookingProvider: "Booking", nights: "последние ночи" },
+    ],
     spots: [
       { name: "Munduk Waterfall", desc: "Классика, лёгкий трек 15 мин", mapQuery: "Munduk Waterfall", tag: "водопад", cost: "20k" },
       { name: "Melanting Waterfall", desc: "Рядом с Мундук-водопадом, совмещённый трек", mapQuery: "Melanting Waterfall Munduk", tag: "водопад" },
@@ -477,6 +506,10 @@ export const PLACES: Place[] = [
     summary: "Улувату, скалы, сёрф, закаты, Кечак-танец",
     emoji: "🌅",
     color: "sunset",
+    arriveFrom: "munduk",
+    hotels: [
+      { name: "Manik Pandawa Villa", mapUrl: "https://maps.app.goo.gl/GRPeCtfP1vjRAqZh9", bookingUrl: "http://ru.airbnb.com/trips/v1/reservation-details/ro/RESERVATION2_CHECKIN/HM95DA5HRD", bookingProvider: "Airbnb" },
+    ],
     spots: [
       { name: "Pura Uluwatu", desc: "Храм на 70-м скале, Кечак-танец пн/ср/пт/вс 18:00", mapQuery: "Pura Uluwatu", tag: "храм", time: "закат", cost: "50k + Кечак 150k" },
       { name: "Padang Padang Beach", desc: "Маленький бухтовой пляж, через пещеру — кинематографично", mapQuery: "Padang Padang Beach", tag: "пляж" },

@@ -4,6 +4,8 @@ import { getPlace, PLACES } from "@/lib/data";
 import SpotCard from "@/components/SpotCard";
 import CafeCard from "@/components/CafeCard";
 import WorkspaceCard from "@/components/WorkspaceCard";
+import HotelCard from "@/components/HotelCard";
+import ArrivalBanner from "@/components/ArrivalBanner";
 import DayItemRow from "@/components/DayItemRow";
 import { mapsSearchUrl } from "@/lib/maps";
 
@@ -61,6 +63,14 @@ export default async function PlacePage({
         </div>
         <div className="text-sm mt-2 opacity-95">{place.summary}</div>
       </header>
+
+      {/* Отель(и) + как добираться */}
+      <div className="px-4 pt-4 space-y-2.5">
+        {place.hotels.map((h) => (
+          <HotelCard key={h.name} hotel={h} />
+        ))}
+        {place.arriveFrom && <ArrivalBanner toSlug={place.slug} />}
+      </div>
 
       {/* Вкладки */}
       <div className="sticky top-0 z-10 bg-bg/95 backdrop-blur border-b border-line">
