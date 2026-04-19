@@ -152,7 +152,7 @@ export const PLACES: Place[] = [
     workNote: "В Сидемене 0 мест для работы — все кафе open-air (жарко, москиты). Работа только из виллы с AC и надёжным wifi. Либо ехать в Клунгкунг (30 мин) в закрытую кофейню с кондиционером.",
     days: [
       { date: "14 июня", weekday: "вс", title: "Переезд и отдых", isWeekend: true, items: [
-        { time: "11:00", text: "Выезд Убуд → Сидемен (1:30)", emoji: "🛵" },
+        { time: "11:00", text: "Выезд Убуд → Сидемен (52 мин, 32 км)", emoji: "🛵" },
         { time: "13:00", text: "Заселение, обед" },
         { time: "16:00", text: "Прогулка по рисовым террасам" },
         { time: "19:00", text: "Ужин с видом на Агунг" },
@@ -208,7 +208,7 @@ export const PLACES: Place[] = [
     workNote: "Большинство кафе Кинтамани закрываются к 22:00. Для работы до поздней ночи — из отеля.",
     days: [
       { date: "16 июня", weekday: "вт", items: [
-        { time: "10:00", text: "Выезд Сидемен → Кинтамани (1:30)", emoji: "🛵" },
+        { time: "10:00", text: "Выезд Сидемен → Кинтамани (1 ч 10 мин, 40 км)", emoji: "🛵" },
         { time: "11:30", text: "Заселение" },
         { time: "12:30", text: "Обед в Akasa с видом" },
         { time: "14:00", text: "Работа", emoji: "💻" },
@@ -291,7 +291,7 @@ export const PLACES: Place[] = [
     days: [
       { date: "21 июня", weekday: "вс", title: "Переезд после Батура", isWeekend: true, items: [
         { time: "10:00", text: "Подъём, долгий завтрак" },
-        { time: "12:00", text: "Выезд Кинтамани → Амед (2:00)", emoji: "🛵" },
+        { time: "12:00", text: "Выезд Кинтамани → Амед (1 ч 56 мин, 71 км)", emoji: "🛵" },
         { time: "14:00", text: "Приехали, заселение" },
         { time: "18:00", text: "Лёгкий ужин у моря" },
       ]},
@@ -363,7 +363,7 @@ export const PLACES: Place[] = [
     days: [
       { date: "26 июня", weekday: "пт", title: "Переезд из Амеда с остановками", items: [
         { time: "7:30", text: "Подъём, завтрак" },
-        { time: "8:30", text: "Выезд Амед → Ловина (3:00)", emoji: "🛵" },
+        { time: "8:30", text: "Выезд Амед → Ловина (1 ч 42 мин, 86 км)", emoji: "🛵" },
         { time: "", text: "Остановки: Tejakula, Les Waterfall 60м, Air Sanih" },
         { time: "13:00", text: "Приехали, заселение, обед" },
         { time: "14:00", text: "Работа", emoji: "💻" },
@@ -426,7 +426,7 @@ export const PLACES: Place[] = [
     workNote: "В Пемутеране практически нет мест для серьёзной работы. Вечером — только из отеля (Matahari Beach, Taman Sari, Puri Ganesha).",
     days: [
       { date: "29 июня", weekday: "пн", items: [
-        { time: "10:00", text: "Выезд Ловина → Пемутеран (1:15)", emoji: "🛵" },
+        { time: "10:00", text: "Выезд Ловина → Пемутеран (52 мин, 48 км)", emoji: "🛵" },
         { time: "11:30", text: "Заселение" },
         { time: "12:00", text: "Biorock — снорк у берега", emoji: "🐠" },
         { time: "12:30", text: "Reef Seen Turtle Project", emoji: "🐢" },
@@ -476,7 +476,7 @@ export const PLACES: Place[] = [
     workNote: "Мундук — горная деревня. Еду и wifi ищи в отеле (Ngiring Ngewedang, Puri Lumbung и др.) либо перезагружайся тут без работы.",
     days: [
       { date: "1 июля", weekday: "ср", items: [
-        { time: "9:00", text: "Выезд Пемутеран → Мундук (2:30)", emoji: "🛵" },
+        { time: "9:00", text: "Выезд Пемутеран → Clovehigh (1 ч 6 мин, 55 км)", emoji: "🛵" },
         { time: "11:30", text: "Заселение" },
         { time: "12:00", text: "Обед в Ngiring Ngewedang" },
         { time: "14:00", text: "Работа", emoji: "💻" },
@@ -530,10 +530,10 @@ export const PLACES: Place[] = [
     workNote: "Букит — финальные дни. Конкретные места не нужны, выбирай по настроению.",
     days: [
       { date: "4 июля", weekday: "пт", title: "Переезд Мундук → Букит через Джатилувих", items: [
-        { time: "9:00", text: "Выезд Мундук → Джатилувих (1:30)", emoji: "🛵" },
+        { time: "9:00", text: "Выезд Мундук → Джатилувих (52 мин, 37 км)", emoji: "🛵" },
         { time: "10:30", text: "Остановка в Джатилувих: UNESCO рисовые террасы, 1–2 часа", emoji: "🌾", highlight: true },
         { time: "12:30", text: "Обед в Gong Jatiluwih с панорамой" },
-        { time: "14:00", text: "Выезд Джатилувих → Букит (2:30)", emoji: "🛵" },
+        { time: "14:00", text: "Выезд Джатилувих → Букит (1 ч 38 мин, 70 км)", emoji: "🛵" },
         { time: "17:00", text: "Заселение в Букит, пляж", emoji: "🏖" },
         { time: "20:00", text: "Ужин" },
       ]},

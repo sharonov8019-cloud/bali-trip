@@ -7,6 +7,12 @@ type Seg = {
   toName: string;
   distanceKm: number;
   durationMin: number;
+  googleDrivingMin?: number;
+  via?: string;
+  viaMin?: number;
+  viaKm?: number;
+  afterMin?: number;
+  afterKm?: number;
 };
 
 function fmtDuration(min: number): string {
@@ -16,15 +22,11 @@ function fmtDuration(min: number): string {
   return m === 0 ? `${h} ч` : `${h} ч ${m} мин`;
 }
 
-// Находит все сегменты которые приводят в данную локацию.
-// Для Мундука (munduk1 → munduk2) возвращает комбинированный сегмент.
 function findArrivalSegments(toSlug: string): Seg[] {
   const segs = routeGeometry.segments as Seg[];
-  // Мундук: сначала pemuteran→munduk1, потом munduk1→munduk2
   if (toSlug === "munduk") {
     return segs.filter((s) => s.to === "munduk1" || s.to === "munduk2");
   }
-  // Букит: munduk2→bukit (через Джатилувих)
   if (toSlug === "bukit") {
     return segs.filter((s) => s.to === "bukit");
   }
@@ -41,17 +43,26 @@ export default function ArrivalBanner({ toSlug }: { toSlug: string }) {
   return (
     <div className="bg-white/90 rounded-xl p-3 shadow-card text-ink">
       <div className="text-[10px] uppercase tracking-wider text-ink2 font-semibold">
-        🛵 Как добираться
+        🛵 Как добираться на мопеде
       </div>
-      <div className="mt-1.5 space-y-1">
+      <div className="mt-1.5 space-y-2">
         {segs.map((s, i) => (
           <div key={i} className="text-sm leading-snug">
-            <span className="text-ink2">{s.fromName}</span>
-            <span className="text-ink2 mx-1.5">→</span>
-            <span className="font-semibold">{s.toName}</span>
-            <span className="text-ink2 ml-2 text-xs">
-              {s.distanceKm} км · {fmtDuration(s.durationMin)}
-            </span>
+            <div>
+              <span className="text-ink2">{s.fromName}</span>
+              <span className="text-ink2 mx-1.5">→</span>
+              <span className="font-semibold">{s.toName}</span>
+            </div>
+            <div className="text-xs text-ink2">
+              {s.distanceKm} км · <span className="font-semibold text-ink">{fmtDuration(s.durationMin)}</span>
+            </div>
+            {s.via && s.viaMin && s.afterMin && (
+              <div className="text-[11px] text-ink2 mt-0.5 pl-2 border-l-2 border-gold/40">
+                Остановка в Джатилувих (UNESCO террасы, 1–2 ч):<br/>
+                → {s.via}: {s.viaKm} км · {fmtDuration(s.viaMin)}<br/>
+                → {s.toName}: {s.afterKm} км · {fmtDuration(s.afterMin)}
+              </div>
+            )}
           </div>
         ))}
         {segs.length > 1 && (
@@ -60,11 +71,9 @@ export default function ArrivalBanner({ toSlug }: { toSlug: string }) {
           </div>
         )}
       </div>
-      {toSlug === "bukit" && (
-        <div className="text-[11px] text-ink2 mt-2">
-          🌾 По пути — остановка в Джатилувих (UNESCO рисовые террасы), ~1–2 часа.
-        </div>
-      )}
+      <div className="text-[10px] text-ink2 mt-2 italic">
+        Данные Google Maps с поправкой −18% на мопед (2-wheeler)
+      </div>
     </div>
   );
 }
