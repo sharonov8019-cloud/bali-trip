@@ -7,7 +7,8 @@ type Seg = {
   toName: string;
   distanceKm: number;
   durationMin: number;
-  googleDrivingMin?: number;
+  drivingMin?: number;
+  source?: string;
   via?: string;
   viaMin?: number;
   viaKm?: number;
@@ -72,7 +73,7 @@ export default function ArrivalBanner({ toSlug }: { toSlug: string }) {
         )}
       </div>
       <div className="text-[10px] text-ink2 mt-2 italic">
-        Данные Google Maps с поправкой −18% на мопед (2-wheeler)
+        Google Maps driving. На мопеде в горах ощутимо быстрее (у нас +2 подтверждённых).
       </div>
     </div>
   );
