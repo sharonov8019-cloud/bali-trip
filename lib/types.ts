@@ -3,10 +3,13 @@ export type Price = "$" | "$$" | "$$$";
 export interface Spot {
   name: string;
   desc: string;
-  mapQuery: string; // строка для поиска в Google Maps
-  tag?: string;     // достопримечательность / активность / спа / храм и т.п.
+  mapQuery: string; // строка для поиска в Google Maps (fallback)
+  mapUrl?: string;  // прямая короткая ссылка maps.app.goo.gl/... (если есть — приоритет над mapQuery)
+  tag?: string;     // храм / водопад / вода / спа/сауна / бар / другое
   time?: string;    // когда лучше идти
   cost?: string;    // вход, цена
+  rating?: number;  // Google Maps rating (например 4.7)
+  reviews?: number; // количество отзывов (например 2800)
 }
 
 export interface Cafe {
@@ -57,6 +60,25 @@ export interface Hotel {
   nights?: string;         // "ночи 1–2" если в локации несколько отелей
 }
 
+export interface RouteStop {
+  time?: string;       // "10:00" или "10:00 → 14:00" для длинных интервалов
+  emoji?: string;      // эмодзи рядом с временем (например 🛵, 💦, 🌾)
+  name: string;        // "Suwat Waterfall"
+  desc?: string;       // короткое пояснение, что делаем
+  mapUrl?: string;     // прямая ссылка maps.app.goo.gl/...
+  mapQuery?: string;   // строка для поиска в Maps (fallback)
+  duration?: string;   // "1.5 ч"
+  cost?: string;       // "20k IDR" / "минимум 350k"
+}
+
+export interface RouteDay {
+  title: string;       // "Будний день" / "Пятница" / "Суббота"
+  emoji: string;       // "🐒" / "💦" / "🌅"
+  hours: string;       // "10:00 → 14:00"
+  subtitle?: string;   // "после церемонии" / "полный день"
+  stops: RouteStop[];
+}
+
 export interface Place {
   slug: string;
   name: string;
@@ -72,4 +94,5 @@ export interface Place {
   workspaces: Workspace[];
   workNote?: string;
   days: Day[];
+  routes?: RouteDay[];   // маршруты по дням (вкладка «Маршрут»)
 }

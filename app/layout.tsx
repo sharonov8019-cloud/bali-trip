@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import BottomNav from "@/components/BottomNav";
 import SWRegister from "@/components/SWRegister";
+import OfflineReady from "@/components/OfflineReady";
 
 export const metadata: Metadata = {
   title: "Бали 2026",
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ru">
       <body className="bg-bg text-ink min-h-dvh">
         <SWRegister />
+        <OfflineReady />
         <main className="max-w-2xl mx-auto pb-24 safe-top">{children}</main>
         <BottomNav />
       </body>

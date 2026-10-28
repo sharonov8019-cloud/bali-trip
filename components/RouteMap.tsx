@@ -54,7 +54,9 @@ export default function RouteMap() {
         });
         mapRef.current = map;
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        // Без {s}-поддоменов: один стабильный хост — тогда тайлы из офлайн-прекеша
+        // совпадают с тем, что запрашивает карта.
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           attribution: "© OpenStreetMap",
           maxZoom: 19,
         }).addTo(map);

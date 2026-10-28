@@ -7,6 +7,7 @@ import WorkspaceCard from "@/components/WorkspaceCard";
 import HotelCard from "@/components/HotelCard";
 import ArrivalBanner from "@/components/ArrivalBanner";
 import DayItemRow from "@/components/DayItemRow";
+import RouteDayCard from "@/components/RouteDayCard";
 import { mapsSearchUrl } from "@/lib/maps";
 
 export function generateStaticParams() {
@@ -19,7 +20,7 @@ const gradMap: Record<string, string> = {
   sunset: "from-sunset to-[#F0955F]",
 };
 
-type Tab = "plan" | "spots" | "cafes" | "work";
+type Tab = "plan" | "route" | "spots" | "cafes" | "work";
 
 export default async function PlacePage({
   params,
@@ -33,7 +34,9 @@ export default async function PlacePage({
   const place = getPlace(slug);
   if (!place) notFound();
 
-  const currentTab: Tab = (tab as Tab) ?? "plan";
+  // Если у локации есть маршрут — он становится дефолтной вкладкой; иначе "Места".
+  const hasRoute = (place.routes?.length ?? 0) > 0;
+  const currentTab: Tab = (tab as Tab) ?? (hasRoute ? "route" : "spots");
   const grad = gradMap[place.color] ?? gradMap.jungle;
 
   return (
@@ -75,7 +78,11 @@ export default async function PlacePage({
       {/* Вкладки */}
       <div className="sticky top-0 z-10 bg-bg/95 backdrop-blur border-b border-line">
         <div className="flex px-2 noscrollbar overflow-x-auto">
-          <TabLink slug={slug} tab="plan" current={currentTab} label="План" count={place.days.length} />
+          {/* Вкладка "План" временно скрыта — данные в place.days сохранены, для возврата раскомментировать */}
+          {/* <TabLink slug={slug} tab="plan" current={currentTab} label="План" count={place.days.length} /> */}
+          {hasRoute && (
+            <TabLink slug={slug} tab="route" current={currentTab} label="Маршрут" count={place.routes!.length} />
+          )}
           <TabLink slug={slug} tab="spots" current={currentTab} label="Места" count={place.spots.length} />
           <TabLink slug={slug} tab="cafes" current={currentTab} label="Кафе" count={place.cafes.length} />
           <TabLink slug={slug} tab="work" current={currentTab} label="💻 Работа" count={place.workspaces.length} />
@@ -112,6 +119,14 @@ export default async function PlacePage({
                   ))}
                 </div>
               </div>
+            ))}
+          </div>
+        )}
+
+        {currentTab === "route" && place.routes && (
+          <div className="space-y-4">
+            {place.routes.map((day) => (
+              <RouteDayCard key={day.title} day={day} />
             ))}
           </div>
         )}
